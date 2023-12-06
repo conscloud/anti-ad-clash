@@ -1,13 +1,9 @@
-name: sync list to dist
+name: sync anti-ad from privacy-protection-tools/anti-AD
 
 on:
-  push:
-    branches: 
-      - 'master'
-    paths: 
-      - 'anti-ad-**.*'
-      - 'adblock-for-dnsmasq.conf'
   workflow_dispatch:
+  schedule:
+    - cron:  '30 19 * * *'
 
 jobs:
   build:
