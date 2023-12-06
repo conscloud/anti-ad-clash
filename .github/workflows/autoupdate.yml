@@ -24,8 +24,8 @@ jobs:
     - name: Commit files
       run: |
         cd ~/temp
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git add .
         git commit -m "pull newest list." -a
     - name: Push changes
@@ -33,5 +33,5 @@ jobs:
       with:
         github_token: ${{ secrets.PERSON_TOKEN }}
         branch: 'master'
-        directory: './'
+        directory: '/home/runner/temp'
         repository: 'conscloud/anti-ad-clash'
