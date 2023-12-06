@@ -18,13 +18,11 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@master
-    - name: pull 
-      run: |
-        git pull origin master --depth 1 https://github.com/conscloud/anti-ad-clash.git ~/temp
-        ls -l ~/temp
     - name: download the ad-list
       # run: git clone --depth 1 https://github.com/privacy-protection-tools/anti-AD.git ~/temp
-      run: wget https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt
+      run: |
+        wget https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt
+        ls -l
     - name: copy some list files
       run: |
         mv -f anti-ad-surge.txt ~/tmp/anti-ad-clash.list
