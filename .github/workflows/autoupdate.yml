@@ -22,8 +22,6 @@ jobs:
         mv -f anti-ad-surge.txt anti-ad-clash.list
     - name: Commit files
       run: |
-        git config --local user.email $GIT_EMAIL
-        git config --local user.name $GIT_USER
         git add .
         git commit -m "pull newest list." -a
     - name: Push changes
