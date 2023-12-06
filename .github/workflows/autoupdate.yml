@@ -31,9 +31,9 @@ jobs:
         git add .
         git commit -m "pull newest list." -a
     - name: Push changes
-      uses: ad-m/github-push-action@main
+      uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.PERSON_TOKEN }}
-        branch: 'main'
+        branch: 'master'
         # directory: '/home/runner/work/anti-ad-clash/anti-ad-clash'
         # repository: 'conscloud/anti-ad-clash'
