@@ -22,8 +22,6 @@ jobs:
       # run: git clone --depth 1 https://github.com/privacy-protection-tools/anti-AD.git ~/temp
       run: |
         wget -q https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt
-        pwd
-        ls -a
     - name: rename tile to list
       run: |
         mv -f anti-ad-surge.txt anti-ad-clash.list
