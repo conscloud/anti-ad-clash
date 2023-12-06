@@ -14,13 +14,13 @@ jobs:
     - uses: actions/checkout@v2
     - name: clone the ad-list
       # run: git clone --depth 1 https://github.com/privacy-protection-tools/anti-AD.git ~/temp
-      run: wget -O ~/temp/anti-ad-clash.list https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt
+      run: wget https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt
     # - name: copy some list files
     #   run: |
-    #     cp ~/temp/anti-ad-surge.txt ~/temp/anti-ad-clash.list
+    #     cp -f anti-ad-surge.txt /home/runner/work/anti-ad-clash/anti-ad-clash/anti-ad-clash.list
     - name: Commit files
       run: |
-        cd ~/temp
+        cd /home/runner/work/anti-ad-clash/anti-ad-clash
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add .
@@ -30,5 +30,5 @@ jobs:
       with:
         github_token: ${{ secrets.PERSON_TOKEN }}
         branch: 'master'
-        directory: '/home/runner/temp'
+        directory: '/home/runner/work/anti-ad-clash/anti-ad-clash'
         repository: 'conscloud/anti-ad-clash'
