@@ -3,7 +3,7 @@ name: sync anti-ad from privacy-protection-tools/anti-AD
 on:
   workflow_dispatch:
   push: 
-    branches: [ master ]
+    branches: [ main ]
   schedule:
     - cron:  '30 19 * * *'
     
@@ -17,10 +17,12 @@ jobs:
 
     steps:
     - name: checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: pull 
-      run: git clone --depth 1 https://github.com/conscloud/anti-ad-clash.git ~/temp
-    - name: clone the ad-list
+      run: |
+        git pull origin main --depth 1 https://github.com/conscloud/anti-ad-clash.git ~/temp
+        ls -l ~/temp
+    - name: download the ad-list
       # run: git clone --depth 1 https://github.com/privacy-protection-tools/anti-AD.git ~/temp
       run: wget https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt
     - name: copy some list files
@@ -34,7 +36,7 @@ jobs:
         git add .
         git commit -m "pull newest list." -a
     - name: Push changes
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@main
       with:
         github_token: ${{ secrets.PERSON_TOKEN }}
         branch: 'master'
