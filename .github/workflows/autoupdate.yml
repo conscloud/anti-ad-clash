@@ -6,6 +6,9 @@ on:
     branches: [ master ]
   schedule:
     - cron:  '30 19 * * *'
+    
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -22,8 +25,8 @@ jobs:
         mv -f anti-ad-surge.txt anti-ad-clash.list
     - name: Commit files
       run: |
-        git config --local user.email conscloud@gmail.com
-        git config --local user.name conscloud
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git add .
         git commit -m "pull newest list." -a
     - name: Push changes
