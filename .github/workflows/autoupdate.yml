@@ -15,9 +15,9 @@ jobs:
     - name: clone the ad-list
       # run: git clone --depth 1 https://github.com/privacy-protection-tools/anti-AD.git ~/temp
       run: wget https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt
-    # - name: copy some list files
-    #   run: |
-    #     cp -f anti-ad-surge.txt /home/runner/work/anti-ad-clash/anti-ad-clash/anti-ad-clash.list
+    - name: copy some list files
+      run: |
+        mv -f anti-ad-surge.txt /home/runner/work/anti-ad-clash/anti-ad-clash/anti-ad-clash.list
     - name: Commit files
       run: |
         cd /home/runner/work/anti-ad-clash/anti-ad-clash
