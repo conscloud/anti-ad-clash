@@ -14,10 +14,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: clone the ad-list
       # run: git clone --depth 1 https://github.com/privacy-protection-tools/anti-AD.git ~/temp
-      run: wget -q https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt ~/temp
-    - name: copy some list files
-      run: |
-        cp ~/temp/anti-ad-surge.txt ~/temp/anti-ad-clash.list
+      run: wget -q -O ~/temp/anti-ad-clash.list -c https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt
+    # - name: copy some list files
+    #   run: |
+    #     cp ~/temp/anti-ad-surge.txt ~/temp/anti-ad-clash.list
     - name: Commit files
       run: |
         cd ~/temp
