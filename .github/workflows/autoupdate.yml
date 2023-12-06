@@ -23,8 +23,8 @@ jobs:
     - name: Commit files
       run: |
         cd /home/runner/work/anti-ad-clash/anti-ad-clash
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
+        git config --local user.email $GIT_EMAIL
+        git config --local user.name $GIT_USER
         git add .
         git commit -m "pull newest list." -a
     - name: Push changes
