@@ -1,0 +1,36 @@
+name: sync list to dist
+
+on:
+  push:
+    branches: 
+      - 'master'
+    paths: 
+      - 'anti-ad-**.*'
+      - 'adblock-for-dnsmasq.conf'
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: clone the website
+      run: git clone https://github.com/privacy-protection-tools/anti-AD.git ./
+    - name: copy some list files
+      run: |
+        cp ./anti-ad-surge.txt ./anti-ad-clash.list
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "pull newest list." -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.PERSON_TOKEN }}
+        branch: 'master'
+        directory: './'
+        repository: 'conscloud/anti-ad-clash.git'
