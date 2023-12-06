@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: clone the website
-      run: git clone https://github.com/privacy-protection-tools/anti-AD.git ~/temp
+      run: git clone --depth 1 https://github.com/privacy-protection-tools/anti-AD.git ~/temp
     - name: copy some list files
       run: |
         cp ~/temp/anti-ad-surge.txt ~/temp/anti-ad-clash.list
